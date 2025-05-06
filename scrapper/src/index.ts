@@ -2,10 +2,12 @@ import dotenv from 'dotenv';
 import logger from './utils/logger';
 import { fetchNextPage, init } from './services/main/oldMovies';
 import express from 'express';
-import ServerlessHttp from 'serverless-http';
+import { env } from './config/env.config';
 
 // Load environment variables
 dotenv.config();
+
+const PORT = env.get('PORT');
 
 const app = express();
 const router = express.Router();
@@ -34,7 +36,8 @@ router.get('/init', async (req, res) => {
   }
 });
 
-app.use(`/.netlify/functions/api`, router);
+app.use(`/api`, router);
 
-module.exports = app;
-module.exports.handler = ServerlessHttp(app);
+app.listen(PORT, () => {
+  logger.info(`Server Running on ${PORT}`);
+});

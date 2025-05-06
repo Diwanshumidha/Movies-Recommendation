@@ -19,11 +19,11 @@ process.on('unhandledRejection', (reason: unknown) => {
 
 const app = express();
 
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.get('/scrape', async (req, res) => {
+app.get('/api/scrape', async (req, res) => {
   try {
     await fetchNextPage();
     res.json({ status: 'success' });
@@ -33,7 +33,7 @@ app.get('/scrape', async (req, res) => {
   }
 });
 
-app.get('/init', async (req, res) => {
+app.get('/api/init', async (req, res) => {
   try {
     await init();
     res.json({ status: 'success' });

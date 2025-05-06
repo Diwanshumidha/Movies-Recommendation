@@ -1,0 +1,48 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TypeScript Node.js application with ESLint and Prettier",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "build": "pnpm run lint && pnpm run format && tsc",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "tsx src/config/genEnvExample.ts"
+  },
+  "keywords": [
+    "typescript",
+    "node",
+    "eslint",
+    "prettier"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@netlify/functions": "^3.1.3",
+    "@prisma/client": "6.6.0",
+    "@types/express": "^5.0.1",
+    "axios": "^1.6.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "serverless-http": "^3.2.0",
+    "winston": "^3.11.0",
+    "zod": "4.0.0-beta.20250420T053007"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/node": "^20.17.30",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^9.25.0",
+    "prettier": "^3.2.5",
+    "prisma": "6.6.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.30.1"
+  }
+}

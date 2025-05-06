@@ -8,7 +8,7 @@ export class TMDBAPI {
   public readonly image: ImageService;
 
   constructor(config: TMDBConfig) {
-    const httpClient = new TMDBHttpClient(config.apiKey, config.baseUrl);
+    const httpClient = new TMDBHttpClient(config.apiKeys, config.baseUrl);
 
     this.movies = new MovieService(httpClient);
     this.image = new ImageService();

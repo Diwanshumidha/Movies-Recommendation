@@ -34,6 +34,13 @@ export default defineConfig(
     tseslint.configs.strict,
   ],
   {
-    ignores: ['**/*.{test,spec}.{js,ts,jsx,tsx}', 'dist/', 'node_modules/', 'scripts/', '.*.js'],
+    ignores: [
+      '**/*.{test,spec}.{js,ts,jsx,tsx}',
+      'dist/',
+      'node_modules/',
+      'scripts/',
+      '.*.js',
+      'src/generated/',
+    ],
   },
 );

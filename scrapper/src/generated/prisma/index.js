@@ -207,6 +207,7 @@ warnEnvConflicts({
 })
 
 const PrismaClient = getPrismaClient(config)
+
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 

@@ -7,23 +7,14 @@ import ServerlessHttp from 'serverless-http';
 // Load environment variables
 dotenv.config();
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (error: Error) => {
-  throw error;
-});
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (reason: unknown) => {
-  throw reason;
-});
-
 const app = express();
+const router = express.Router();
 
-app.get('/api/health', (req, res) => {
+router.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.get('/api/scrape', async (req, res) => {
+router.get('/scrape', async (req, res) => {
   try {
     await fetchNextPage();
     res.json({ status: 'success' });
@@ -33,7 +24,7 @@ app.get('/api/scrape', async (req, res) => {
   }
 });
 
-app.get('/api/init', async (req, res) => {
+router.get('/init', async (req, res) => {
   try {
     await init();
     res.json({ status: 'success' });
@@ -42,5 +33,7 @@ app.get('/api/init', async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Scraping failed' });
   }
 });
+
+app.use(`/.netlify/functions/api`, router);
 
 export const handler = ServerlessHttp(app);

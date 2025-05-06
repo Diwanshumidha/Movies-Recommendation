@@ -5,9 +5,8 @@
   "description": "TypeScript Node.js application with ESLint and Prettier",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
-    "build": "pnpm run lint && pnpm run format && tsc",
+    "start": "npx netlify-lambda serve src",
+    "build": "npx netlify-lambda build src",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",

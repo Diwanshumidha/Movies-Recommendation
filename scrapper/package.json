@@ -5,8 +5,8 @@
   "description": "TypeScript Node.js application with ESLint and Prettier",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npx netlify-lambda serve src",
-    "build": "npx netlify-lambda build src",
+    "start": "npx netlify dev",
+    "build": "node esbuild.config.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -37,6 +37,7 @@
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
+    "esbuild": "^0.25.4",
     "eslint": "^9.25.0",
     "prettier": "^3.2.5",
     "prisma": "6.6.0",
